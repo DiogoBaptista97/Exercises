@@ -16,7 +16,7 @@ int main(void)
 			break;
 		else
 			options(str, lista);
-
+		std::cout << "\n" << std::endl;
 	}
 	std::cout << "Exiting the program" << std::endl;
 	return 0;

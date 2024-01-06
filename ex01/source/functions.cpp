@@ -61,7 +61,7 @@ void Square(std::vector<int>& lista) //passing by reference to change the origin
 		if (lista[i] > 46340)
 		{
 			std::cout << "Warning:" << std::endl;
-			std::cout << "Using Square if any number is bigger than 46340 it provide with INT_MAX" << std::endl;
+			std::cout << "Using Square if any number is bigger than 46340, it will provide with INT_MAX" << std::endl;
 			break;
 		}
 }
