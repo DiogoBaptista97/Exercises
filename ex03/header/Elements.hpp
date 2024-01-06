@@ -15,6 +15,8 @@ class Elements{
 		std::string getTag() const;
 		std::string getColor() const;
 		int getId() const;
+		//diplay info about the element
+		void display() const;
 };
 
 #endif // ELEMENTS_HPP

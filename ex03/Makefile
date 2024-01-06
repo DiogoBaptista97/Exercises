@@ -5,7 +5,7 @@ SRC = ./source/main.cpp \
 		./source/Category.cpp \
 		./source/Elements.cpp \
 		./source/Subcategory.cpp \
-		./source/Parse_Elements.cpp
+		./source/Parse_Element.cpp
 	
 OBJS = ${SRC:.cpp=.o}
 

@@ -17,7 +17,12 @@ void display_categories(const std::vector<Category>& categories)
 		for (const auto& subcategory : category.getSubcategories()) {
 			std::cout << "\tSubcategory: " << subcategory->getName() << std::endl;
 			for (const auto& element : subcategory->getElements()) {
-				std::cout << "\t\tElement: " << element.getColor() << element.getId() << element.getTag() << element.getType() << std::endl;
+				std::cout << "\t\tElement: " << std::endl;
+				std::cout << "\t\t\tType: " << element.getType() << std::endl;
+				std::cout << "\t\t\tTag: " << element.getTag() << std::endl;
+				std::cout << "\t\t\tId: " << element.getId() << std::endl;
+				std::cout << "\t\t\tColor: " << element.getColor() << std::endl;
+
 			}
 		}
 	}
