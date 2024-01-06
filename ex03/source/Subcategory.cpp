@@ -1,4 +1,5 @@
 #include "../header/Subcategory.hpp"
+#include <iostream>
 
 Subcategory::Subcategory(int id, std::string name) : id(id), name(name) {
 }
@@ -13,4 +14,8 @@ std::string Subcategory::getName() const {
 
 std::vector<Elements> Subcategory::getElements() const {
 	return this->elements;
+}
+
+int Subcategory::getId() const {
+	return this->id;
 }

@@ -15,6 +15,7 @@ class Subcategory{
 		void addElement(const Elements& element);
 		std::string getName() const;
 		std::vector<Elements> getElements() const;
+		int getId() const;
 };
 
 #endif // SUBCATEGORY_HPP

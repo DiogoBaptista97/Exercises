@@ -1,8 +1,24 @@
 #include "../header/Elements.hpp"
 
-Elements::Elements(int id, std::string name) : id(id), name(name) {	
+Elements::Elements(std::string type, std::string tag, std::string color, int id){
+	this->type = type;
+	this->tag = tag;
+	this->color = color;
+	this->id = id;
 }
 
-std::string Elements::getName() const {
-	return this->name;
+std::string Elements::getType() const{
+	return this->type;
+}
+
+std::string Elements::getTag() const{
+	return this->tag;
+}
+
+std::string Elements::getColor() const{
+	return this->color;
+}
+
+int Elements::getId() const{
+	return this->id;
 }

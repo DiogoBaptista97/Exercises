@@ -5,11 +5,16 @@
 
 class Elements{
 	private:
+		std::string type;
+		std::string tag;
+		std::string color;
 		int id;
-		std::string name;
 	public:
-		Elements(int id, std::string name);
-		std::string getName() const;
+		Elements(std::string type, std::string tag, std::string color, int id);
+		std::string getType() const;
+		std::string getTag() const;
+		std::string getColor() const;
+		int getId() const;
 };
 
 #endif // ELEMENTS_HPP

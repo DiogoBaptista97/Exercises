@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <memory>
 #include "../header/json.hpp"
 #include "../header/Category.hpp"
 #include "../header/Subcategory.hpp"
@@ -19,23 +20,12 @@ nlohmann::json read_json()
 	return info;
 }
 
-Elements parseElement(const nlohmann::json& elem)
-{
-	if (!elem.contains("id") || !elem.contains("name"))
-		throw std::runtime_error("Missing 'id' or 'name' in element.");
-	return Elements(elem["id"], elem["name"]);
-}
 
-Subcategory parseSubcategory(const nlohmann::json& subcat)
+std::shared_ptr<Subcategory> parseSubcategory(const nlohmann::json& subcat)
 {
 	if (!subcat.contains("id") || !subcat.contains("name"))
 		throw std::runtime_error("Missing 'id' or 'name' in subcategory.");
-	Subcategory subcategory(subcat["id"], subcat["name"]);
-	if (subcat.contains("elements") && subcat["elements"].is_array())
-	{
-		for (const auto& elem : subcat["elements"])
-			subcategory.addElement(parseElement(elem));
-	}
+	auto subcategory = std::make_shared<Subcategory> (subcat["id"], subcat["name"]);
 	return subcategory;
 }
 
@@ -48,10 +38,15 @@ Category parseCategory(const nlohmann::json& cat)
 	if (cat.contains("subcategories") && cat["subcategories"].is_array())
 	{
 		for (const auto& subcat : cat["subcategories"])
-			category.addSubcategory(parseSubcategory(subcat));
+		{
+			auto subcategory = parseSubcategory(subcat);
+			category.addSubcategory(subcategory);
+		}
 	}
 	return category;
 }
+
+
 
 void parse_json(const nlohmann::json& info, std::vector<Category>& categories)
 {
@@ -59,7 +54,8 @@ void parse_json(const nlohmann::json& info, std::vector<Category>& categories)
 		throw std::runtime_error("Invalid JSON file, does not contain categories or in not in an array.");
 	for (const auto& cat : info["categories"])
 		categories.push_back(parseCategory(cat));
-
+	std::cout << "Parsing config sidebar..." << std::endl;
+	parseConfigsSideBar(info["configsSideBar"], categories);
 }
 
 

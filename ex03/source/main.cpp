@@ -15,9 +15,9 @@ void display_categories(const std::vector<Category>& categories)
 	for (const auto& category : categories) {
 		std::cout << "Category: " << category.getName() << std::endl;
 		for (const auto& subcategory : category.getSubcategories()) {
-			std::cout << "\tSubcategory: " << subcategory.getName() << std::endl;
-			for (const auto& element : subcategory.getElements()) {
-				std::cout << "\t\tElement: " << element.getName() << std::endl;
+			std::cout << "\tSubcategory: " << subcategory->getName() << std::endl;
+			for (const auto& element : subcategory->getElements()) {
+				std::cout << "\t\tElement: " << element.getColor() << element.getId() << element.getTag() << element.getType() << std::endl;
 			}
 		}
 	}
@@ -31,6 +31,7 @@ int main()
 
 		info = read_json();
 		parse_json(info, categories);
+		std::cout << "Displaying categories..." << std::endl;
 		display_categories(categories);
 	}
 	catch (const std::exception& e) {
